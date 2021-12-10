@@ -14,7 +14,7 @@
             <div id="user_menu">
                 <ul>
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="./logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
