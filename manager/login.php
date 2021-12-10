@@ -28,7 +28,7 @@
 <?php
     // Validate User Input
     if(isset($_POST["login-submit"])) {
-        $sql = "SELECT l.eid AS eid, l.password AS password, e.tid AS tid FROM login AS l, employee AS e WHERE l.eid=e.employee_id AND l.eid=?";
+        $sql = "SELECT l.eid AS eid, l.password AS password, e.firstname AS firstname, e.lastname AS lastname, e.tid AS tid FROM login AS l, employee AS e WHERE l.eid=e.employee_id AND l.eid=?";
         $result = prepareSQL($conn, $sql, "s", $_POST['login-id']);
         if(mysqli_num_rows($result) < 1) {
             echo "
@@ -39,7 +39,10 @@
             while($row_result = mysqli_fetch_array($result)) {
                 $eid = $row_result['eid'];
                 $tid = $row_result['tid'];
+                $fname = $row_result['firstname'];
+                $lname = $row_result['lastname'];
                 $password = $row_result['password'];
+                
 
                 if(!password_verify($_POST['login-pass'], $password)) {
                     echo "
@@ -53,6 +56,8 @@
                     // Start User session
                     $_SESSION["eid"] = $eid;
                     $_SESSION["tid"] = $tid;
+                    $_SESSION["fname"] = strtoupper($fname);
+                    $_SESSION["lname"] = strtoupper($lname);
 
                     break;
                 }
