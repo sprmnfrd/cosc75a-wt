@@ -28,27 +28,25 @@
                     ';
                         if($_SESSION["tid"] == 1) {
                             echo '
-                                <a class="menu-item" href="#"><li>ITEM 1</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 2</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 3</li></a>
+                                <a class="menu-item" href="#"><li>Add New Product</li></a>
+                                <a class="menu-item" href="#"><li>Update Existing Products</li></a>
+                                <a class="menu-item" href="#"><li>Generate Report</li></a>
                             ';
                         } elseif($_SESSION["tid"] == 2) {
                             echo '
-                                <a class="menu-item" href="#"><li>ITEM 4</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 5</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 6</li></a>
+                                <a class="menu-item" href="#"><li>View Orders</li></a>
+                                <a class="menu-item" href="#"><li>Update Inventory</li></a>
                             ';
                         } elseif($_SESSION["tid"] == 3) {
                             echo '
-                                <a class="menu-item" href="#"><li>ITEM 7</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 8</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 9</li></a>
+                                <a class="menu-item" href="#"><li>New Promotion</li></a>
+                                <a class="menu-item" href="#"><li>View Discounts</li></a>
                             ';
                         } elseif($_SESSION["tid"] == 4) {
                             echo '
-                                <a class="menu-item" href="#"><li>ITEM 10</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 11</li></a>
-                                <a class="menu-item" href="#"><li>ITEM 12</li></a>
+                                <a class="menu-item" href="#"><li>Create New Employee</li></a>
+                                <a class="menu-item" href="#"><li>Remove Employee</li></a>
+                                <a class="menu-item" href="#"><li>Reset Password</li></a>
                             ';
                         } else {
                             header("Location: ./login.php");
