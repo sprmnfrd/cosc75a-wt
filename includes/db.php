@@ -27,8 +27,8 @@
     }
 
     $dbServerName = "localhost";
-    $dbUserName = "root";
-    $dbPassword = "";
+    $dbUserName = "wt";
+    $dbPassword = "rE1!cidxFP6G9iLY";
     $dbName = "walangtatak";
 
     $conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName) or die(mysqli_connect_error());
