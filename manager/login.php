@@ -5,25 +5,25 @@
     changeTitle("../templates/header.php", "Walang Tatak - Login");
 ?>
 
-        <div class="login-wrapper">
+        <div id="login-wrapper">
             <img src="../images/resources/logo.jpg" class="logo" style="margin-top: 10px; margin-left: 41%">
-            <h1 class="login-title text-white">WALANG TATAK SYSTEM</h1>
+            <h1 id="login-title text-white">WALANG TATAK SYSTEM</h1>
             <form action="./login.php" method="POST" enctype="multipart/form-data" autocomplete="on">
-                <table class="login-table">
+                <table id="login-table">
                     <tr>
                         <td><h3 class="login-label text-white">Employee ID</h3></td>
-                        <td><input type="text" class="login-input" name="login-id" autofocus required></td>
+                        <td><input type="text" class="login-input border-round" name="login-id" autofocus required></td>
                     </tr>
                     <tr>
                         <td><h3 class="login-label text-white">Password</h3></td>
-                        <td><input type="password" class="login-input" name="login-pass" required></td>
+                        <td><input type="password" class="login-input border-round" name="login-pass" required></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="password-reset"><a href="reset.php">Forgot Password</a></td>
+                        <td id="password-reset"><a href="reset.php">Forgot Password</a></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" id="btn_login" name="login-submit" value="LOGIN"></td>
+                        <td colspan="2"><input type="submit" class="border-round" id="btn_login" name="login-submit" value="LOGIN"></td>
                     </tr>
                 </table>
             </form>

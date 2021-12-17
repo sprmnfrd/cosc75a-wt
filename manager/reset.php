@@ -5,25 +5,25 @@
     changeTitle("../templates/header.php", "Walang Tatak - Reset Password");
 ?>
 
-    <div class="login-wrapper" style="width: 34% !important;">
+    <div id="login-wrapper" style="width: 34% !important;">
         <img src="../images/resources/logo.jpg" class="logo" style="margin-top: 10px; margin-left: 41%">
-        <h1 class="login-title text-white">RESET PASSWORD</h1>
+        <h1 id="login-title text-white">RESET PASSWORD</h1>
         <form action="./reset.php" method="POST" enctype="multipart/form-data" autocomplete="on">
-                <table class="login-table">
+                <table id="login-table">
                      <tr>
                         <td><h3 class="login-label text-white">Employee ID</h3></td>
-                        <td><input type="text" class="login-input" name="login-id" autofocus required></td>
+                        <td><input type="text" class="login-input border-round" name="login-id" autofocus required></td>
                     </tr>
                     <tr>
                         <td><h3 class="login-label text-white">New Password</h3></td>
-                        <td><input type="password" class="login-input" name="login-pass1" required></td>
+                        <td><input type="password" class="login-input border-round" name="login-pass1" required></td>
                     </tr>
                     <tr>
                         <td><h3 class="login-label text-white">Confirm Password</h3></td>
-                        <td><input type="password" class="login-input" name="login-pass2" required></td>
+                        <td><input type="password" class="login-input border-round" name="login-pass2" required></td>
                     </tr>
                    <tr>
-                        <td colspan="2"><input type="submit" id="btn_login" style="width: 45%;" name="reset-submit" value="RESET PASSWORD"></td>
+                        <td colspan="2"><input type="submit" class="border-round" id="btn_login" style="width: 45%;" name="reset-submit" value="RESET PASSWORD"></td>
                     </tr>
                 </table>
             </form>

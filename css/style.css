@@ -114,6 +114,12 @@ a {
     text-decoration: none;
 }
 
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
 h1 {
     font-size: 2em;
 }
@@ -146,7 +152,7 @@ ul {
     color: #ffffff;
 }
 
-.login-wrapper {
+#login-wrapper {
     position: relative;
     width: 30%;
     top: 50%;
@@ -157,18 +163,18 @@ ul {
 
 }
 
-.login-title {
+#login-title {
     text-align: center;
     font-size: xx-large;
     padding: 10px;
 }
 
-.login-table {
+#login-table {
     position: relative;
     width: 100%;
 }
 
-.login-table td {
+#login-table td {
     padding: 15px;
     text-align: center;
 }
@@ -177,7 +183,7 @@ ul {
     font-size: 14pt;
 }
 
-.password-reset {
+#password-reset {
     text-align: left !important;
     padding: 0 4% !important;
 }
@@ -265,4 +271,17 @@ ul {
     float: right;
     margin-top: 1vh;
     margin-right: 0.5vw;
+}
+
+.border-round {
+    border: none;
+    border-radius: 5px;
+}
+
+.border-gray {
+    border: 1px solid gray !important;
+}
+
+.font-xlarge {
+    font-size: x-large;
 }
