@@ -42,27 +42,40 @@
             $password = password_hash($_POST['login-pass2'], PASSWORD_DEFAULT);
 
             $sql = "SELECT c.credential_employee_id AS eid FROM credentials AS c, employees AS e WHERE c.credential_employee_id=e.employee_id AND c.credential_employee_id=?";
-        $result = prepareSQL($conn, $sql, "i", $_POST['login-id']);
+            $result = prepareSQL($conn, $sql, "i", $_POST['login-id']);
 
-        if(mysqli_num_rows($result) < 1) {
-            echo "
-                <script>
-                    alert('Employee ID not found. Please try again.');
-                </script>";
-        } else {
-            while($row_result = mysqli_fetch_array($result)) {
-                $eid = $row_result['eid'];
-
-                $sql = "INSERT INTO password_reset VALUES (NULL, ?, ?, NULL, NULL, 0)";
-                prepareSQL($conn, $sql, "is", $eid, $password);
-
+            if(mysqli_num_rows($result) < 1) {
                 echo "
-                <script>
-                    alert('Password reset request was sent.');
-                </script>";
+                    <script>
+                        alert('Employee ID not found. Please try again.');
+                    </script>";
+            } else {
+                $uppercase = preg_match("@[A-Z]@", $_POST['login-pass2']);
+                $lowercase = preg_match("@[a-z]@", $_POST['login-pass2']);
+                $characase = preg_match("@[^\W]@", $_POST['login-pass2']);
+                $numbecase = preg_match("@[0-9]@", $_POST['login-pass2']);
 
-                break;
+                if(!$uppercase || !$lowercase || !$numbecase || !$characase || strlen($_POST['login-pass2']) < 8) {
+                    echo "
+                        <script>
+                            alert('Password did not meet requirements. Please make sure your password contains at least one uppercase, lowercase, number and special characters.');
+                        </script>";
+                } else {
+                    while($row_result = mysqli_fetch_array($result)) {
+                        $eid = $row_result['eid'];
+    
+                        $sql = "INSERT INTO password_reset VALUES (NULL, ?, ?, NULL, NULL, 0)";
+                        prepareSQL($conn, $sql, "is", $eid, $password);
+    
+                        echo "
+                        <script>
+                            alert('Password reset request was sent. Support team will contact you shortly.');
+                        </script>";
+    
+                        break;
+                    }
+                }
+
             }
         }
     }
-}
