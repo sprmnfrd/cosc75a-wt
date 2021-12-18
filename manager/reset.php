@@ -7,7 +7,7 @@
 
     <div id="login-wrapper" style="width: 34% !important;">
         <img src="../images/resources/logo.jpg" class="logo" style="margin-top: 10px; margin-left: 41%">
-        <h1 id="login-title text-white">RESET PASSWORD</h1>
+        <h1 class="login-title text-white">RESET PASSWORD</h1>
         <form action="./reset.php" method="POST" enctype="multipart/form-data" autocomplete="on">
                 <table id="login-table">
                      <tr>
@@ -50,12 +50,7 @@
                         alert('Employee ID not found. Please try again.');
                     </script>";
             } else {
-                $uppercase = preg_match("@[A-Z]@", $_POST['login-pass2']);
-                $lowercase = preg_match("@[a-z]@", $_POST['login-pass2']);
-                $characase = preg_match("@[^\W]@", $_POST['login-pass2']);
-                $numbecase = preg_match("@[0-9]@", $_POST['login-pass2']);
-
-                if(!$uppercase || !$lowercase || !$numbecase || !$characase || strlen($_POST['login-pass2']) < 8) {
+                if(!validatePassword($_POST['login-pass2'])) {
                     echo "
                         <script>
                             alert('Password did not meet requirements. Please make sure your password contains at least one uppercase, lowercase, number and special characters.');

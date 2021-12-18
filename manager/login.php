@@ -7,7 +7,7 @@
 
         <div id="login-wrapper">
             <img src="../images/resources/logo.jpg" class="logo" style="margin-top: 10px; margin-left: 41%">
-            <h1 id="login-title text-white">WALANG TATAK SYSTEM</h1>
+            <h1 class="login-title text-white">WALANG TATAK SYSTEM</h1>
             <form action="./login.php" method="POST" enctype="multipart/form-data" autocomplete="on">
                 <table id="login-table">
                     <tr>

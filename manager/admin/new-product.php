@@ -58,7 +58,7 @@
         if(in_array($imgExt, $ext)) {
             $rename = 'image_'.date('Y-m-d-H-i-s').'_'.uniqid().'.'.$imgExt;
 
-            move_uploaded_file($img, "../images/product_images/$rename");
+            move_uploaded_file($imgTmp, "../../images/product_images/$rename");
 
             $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
             prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
