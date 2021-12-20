@@ -1,5 +1,5 @@
 <?php
-    function prepareSQL($conn, $sql, string $placeholder, ...$variables) {
+    function prepareSQL($conn, $sql, string $placeholder = "NULL", ...$variables) {
         try {
             //Prepared statement
             $stmt = mysqli_stmt_init($conn);
@@ -7,8 +7,10 @@
             //Pre-prepared statement
             mysqli_stmt_prepare($stmt, $sql);
 
-            //Bind parameters to placeholder
-            mysqli_stmt_bind_param($stmt, $placeholder, ...$variables);
+            //Bind parameters to placeholder if query has parameters
+            if($placeholder != "NULL") {
+                mysqli_stmt_bind_param($stmt, $placeholder, ...$variables);
+            }
 
             //Execute SQL
             mysqli_stmt_execute($stmt);
@@ -27,8 +29,8 @@
     }
 
     $dbServerName = "localhost";
-    $dbUserName = "root";
-    $dbPassword = "";
+    $dbUserName = "wt";
+    $dbPassword = "rE1!cidxFP6G9iLY";
     $dbName = "walangtatak";
 
     $conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName) or die(mysqli_connect_error());

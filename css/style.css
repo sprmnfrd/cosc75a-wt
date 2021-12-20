@@ -104,23 +104,60 @@ input, select {
 
 /* CUSTOM STYLES */
 * {
+    background-color: #FAF9F6;
     font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
 }
 
-/* body {
-    background-color: lightgray;
-} */
+a {
+    color: #1797ec;
+    text-decoration: none;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.83em;
+}
+
+h6 {
+    font-size: 0.67em;
+}
+
+ul {
+    list-style: none;
+}
 
 .text-white {
     color: #ffffff;
 }
 
-.login-wrapper {
+#login-wrapper {
     position: relative;
     width: 30%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 30%);
     background-color: #000000;
     border-radius: 5px;
 
@@ -132,12 +169,12 @@ input, select {
     padding: 10px;
 }
 
-.login-table {
+#login-table {
     position: relative;
     width: 100%;
 }
 
-.login-table td {
+#login-table td {
     padding: 15px;
     text-align: center;
 }
@@ -146,10 +183,105 @@ input, select {
     font-size: 14pt;
 }
 
+#password-reset {
+    text-align: left !important;
+    padding: 0 4% !important;
+}
+
 #btn_login {
     width: 90px;
     height: 40px;
     margin: auto;
     font-weight: bold;
     font-size: larger;
+}
+
+.logo {
+    width: 5vw;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+.hbar {
+    width: 100vw;
+    height: 10vh;
+    display: inline-block;
+    position: relative;
+    background-color: #000000;
+}
+
+.vbar {
+    width: 20vw;
+    height: 90vh;
+    position: absolute;
+    float: left;
+    background-color: #cccccc;
+}
+
+#menu {
+    font-size: larger;
+    margin-top: 30px;
+}
+
+.menu-item {
+    display: block;
+    padding: 10px;
+}
+
+.menu-item:hover {
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+#user_name {
+    position: absolute;
+    top: 10vh;
+    right: 3vw;
+    transform: translateY(-7vh);
+}
+
+#user_name span {
+    color: white;
+    font-size: x-large;
+}
+
+#user_menu {
+    display: inline-block;
+    position: absolute;
+    top: 7vh;
+    right: 3vw;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 2px #cccccc solid;
+    visibility: hidden;
+}
+
+#user_menu ul li {
+    margin: 5px 0;
+    font-size: larger;
+}
+
+.toggle {
+    visibility: visible !important;
+}
+
+#content {
+    width: 79vw;
+    height: 88vh;
+    float: right;
+    margin-top: 1vh;
+    margin-right: 0.5vw;
+}
+
+.border-round {
+    border: none;
+    border-radius: 5px;
+}
+
+.border-gray {
+    border: 1px solid gray !important;
+}
+
+.font-xlarge {
+    font-size: x-large;
 }
