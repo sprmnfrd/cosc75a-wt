@@ -25,9 +25,17 @@
     }
 
     function validateUserPage(int $tid, string $path) {
-        if($tid == 1 && strpos($path, "admin") === true) {
-            return true;
+        if($tid == 1 && strpos($path, "admin") === false) {
+            header("Location: ../admin/dashboard.php");
+            die();
+        }elseif($tid == 2 && strpos($path, "operation") === false) {
+            header("Location: ../operation/dashboard.php");
+            die();
+        }elseif($tid == 3 && strpos($path, "marketing") === false) {
+            header("Location: ../marketing/dashboard.php");
+            die();
+        }elseif($tid == 4 && strpos($path, "support") === false) {
+            header("Location: ../support/dashboard.php");
+            die();
         }
-
-        return false;
     }

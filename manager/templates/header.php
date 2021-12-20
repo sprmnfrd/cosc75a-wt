@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <?php
     date_default_timezone_set('Asia/Manila');
     session_start();
 ?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
