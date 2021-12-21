@@ -4,28 +4,39 @@
 
     changeTitle("../templates/header.php", "Walang Tatak - Login");
 ?>
-
-        <div id="login-wrapper">
-            <img src="../images/resources/logo.jpg" class="logo" style="margin-top: 10px; margin-left: 41%">
-            <h1 class="login-title text-white">WALANG TATAK SYSTEM</h1>
+        <div class="box-small box-round background-black center">
+            <div class="inline-center">
+                <img src="../images/resources/logo.jpg" class="logo">
+                <h1 class="text-white">LOGIN</h1>
+            </div>
             <form action="./login.php" method="POST" enctype="multipart/form-data" autocomplete="on">
-                <table id="login-table">
-                    <tr>
-                        <td><h3 class="login-label text-white">Employee ID</h3></td>
-                        <td><input type="text" class="login-input border-round" name="login-id" autofocus required></td>
-                    </tr>
-                    <tr>
-                        <td><h3 class="login-label text-white">Password</h3></td>
-                        <td><input type="password" class="login-input border-round" name="login-pass" required></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td id="password-reset"><a href="reset.php">Forgot Password</a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="submit" class="border-round" id="btn_login" name="login-submit" value="LOGIN"></td>
-                    </tr>
-                </table>
+                <div class="row m-2 mt-4 mb-4">
+                    <div class="col-5">
+                        <label for="login-id" class="text-white"><h4>Employee ID</h4></label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="login-id" id="login-id" autofocus required>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-5">
+                        <label for="login-pass" class="text-white"><h4>Password</h4></label>
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" name="login-pass" id="login-pass" required>
+                    </div>
+                </div>
+                <div class="row m-2 mb-4">
+                    <div class="col inline-right">
+                        <a href="reset.php" class="">Forgot Password</a>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col inline-center">
+                        <button type="submit" class="btn btn-light" name="login-submit"><strong>Login</strong></button>
+                    </div>
+                </div>
             </form>
         </div>
     </body>
