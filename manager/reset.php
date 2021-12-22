@@ -13,7 +13,7 @@
             <form action="./reset.php" method="POST" enctype="multipart/form-data" autocomplete="on">
                 <div class="row m-2 mt-4 mb-4">
                     <div class="col-5">
-                        <label for="login-id" class="text-white"><h4>Employee ID</h4></label>
+                        <label class="col-form-label" for="login-id" class="text-white"><h4>Employee ID</h4></label>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="reset-id" id="reset-id" autofocus required>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="row m-2 mb-4">
                     <div class="col-5">
-                        <label for="reset-pass1" class="text-white"><h4>Password</h4></label>
+                        <label class="col-form-label" for="reset-pass1" class="text-white"><h4>Password</h4></label>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" name="reset-pass1" id="reset-pass1" required>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row m-2 mb-4">
                     <div class="col-5">
-                        <label for="reset-pass2" class="text-white"><h5>Confirm Password</h5></label>
+                        <label class="col-form-label" for="reset-pass2" class="text-white"><h5>Confirm Password</h5></label>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" name="reset-pass2" id="reset-pass2" required>
