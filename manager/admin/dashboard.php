@@ -21,16 +21,24 @@
                 <?php
                     $sql = "SELECT p.product_code, p.product_name, t.type_name AS product_type, p.product_image, p.product_description FROM products AS p, types AS t WHERE p.product_type=t.type_id AND product_end_timestamp IS NULL;";
                     $result = prepareSQL($conn, $sql);
-                    while($resultRow = mysqli_fetch_array($result)) {
+                    if(mysqli_num_rows($result) < 1) {
                         echo '
-                            <tr>
-                                <td class="inline-center">'.$resultRow["product_code"].'</td>
-                                <td class="inline-center">'.$resultRow["product_name"].'</td>
-                                <td class="inline-center">'.$resultRow["product_type"].'</td>
-                                <td class="inline-center"><a href="../../images/product_images/'.$resultRow["product_image"].'" target="blank">View Image</a></td>
-                                <td>'.$resultRow["product_description"].'</td>
-                            </tr>
-                        ';
+                                <tr>
+                                    <td class="inline-center" colspan=5>There are no products to show</td>
+                                </tr>
+                            ';
+                    } else {
+                        while($resultRow = mysqli_fetch_array($result)) {
+                            echo '
+                                <tr>
+                                    <td class="inline-center">'.$resultRow["product_code"].'</td>
+                                    <td class="inline-center">'.$resultRow["product_name"].'</td>
+                                    <td class="inline-center">'.$resultRow["product_type"].'</td>
+                                    <td class="inline-center"><a href="../../images/product_images/'.$resultRow["product_image"].'" target="blank">View Image</a></td>
+                                    <td>'.$resultRow["product_description"].'</td>
+                                </tr>
+                            ';
+                        }
                     }
                 ?>
             </tbody>
