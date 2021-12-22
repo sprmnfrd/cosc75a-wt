@@ -10,10 +10,6 @@
     text-align: center;
 }
 
-.vertical-center {
-    vertical-align: center;
-}
-
 .inline-right {
     text-align: right;
 }
@@ -24,12 +20,16 @@
 }
 
 .text-white {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 /* ELEMENTS */
 * {
     user-select: none;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* CUSTOM CLASSES */
@@ -43,7 +43,17 @@
     padding-top: 1vh;
 }
 
+.dashboard-logo {
+    width: 4vw;
+    height: 8vh;
+}
+
 .logo {
     width: 6vw;
     height: 12vh;
+}
+
+/* IDs */
+#login {
+    height: 60vh !important;
 }
