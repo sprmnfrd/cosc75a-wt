@@ -7,55 +7,62 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <script type="text/javascript" src="../../js/script.js"></script>
         <title>%TITLE%</title>
     </head>
     <body>
-    <div class="hbar">
-            <a href="dashboard.php"><img src="../../images/resources/logo.jpg" class="logo" style="margin-left: 3vw;"></a>
-            <?php
-                echo '
-                    <a id="user_name" href="javascript:toggleUserMenu();"><span>'.$_SESSION["fname"].' '.$_SESSION["lname"].'</span><a>
-                ';
-            ?>
-            <div id="user_menu">
-                <ul>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="../logout.php">Logout</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark background-black">
+            <div class="container-fluid">
+                <a href="dashboard.php"><img src="../../images/resources/logo.jpg" class="dashboard-logo"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <?php
+                        if($_SESSION["tid"] == 1) {
+                            echo '
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./new-product.php">New Product</a></li>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./edit-product.php">Update Product</a></li>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./report.php">Generate Report</a></li>
+                            ';
+                        } elseif($_SESSION["tid"] == 2) {
+                            echo '
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">View Orders</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Update Inventory</a></li>
+                            ';
+                        } elseif($_SESSION["tid"] == 3) {
+                            echo '
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">New Promotion</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">View Discounts</a></li>
+                            ';
+                        } elseif($_SESSION["tid"] == 4) {
+                            echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Employees</a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Add New Employee</a></li>
+                                            <li><a class="dropdown-item" href="#">Remove Employee</a></li>
+                                        </ul>
+                                    </li>
+                                 </ul>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Reset Password</a></li>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Manage Links</a></li>
+                            ';
+                        } else {
+                            header("Location: ../login.php");
+                            die();
+                        }
+                    ?>
+                    </div>
+                <ul class="navbar-nav mb-2 mb-lg-0 mr-3 d-flex">
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><strong><?php echo $_SESSION["fname"].' '.$_SESSION["lname"]; ?></strong></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-        </div>
-        <div class="vbar">
-            <ul id="menu">
-                <?php
-                    if($_SESSION["tid"] == 1) {
-                        echo '
-                            <a class="menu-item" href="./new-product.php"><li>Add New Product</li></a>
-                            <a class="menu-item" href="./edit-product.php"><li>Update Existing Products</li></a>
-                            <a class="menu-item" href="./report.php"><li>Generate Report</li></a>
-                        ';
-                    } elseif($_SESSION["tid"] == 2) {
-                        echo '
-                            <a class="menu-item" href="#"><li>View Orders</li></a>
-                            <a class="menu-item" href="#"><li>Update Inventory</li></a>
-                        ';
-                    } elseif($_SESSION["tid"] == 3) {
-                        echo '
-                            <a class="menu-item" href="#"><li>New Promotion</li></a>
-                            <a class="menu-item" href="#"><li>View Discounts</li></a>
-                        ';
-                    } elseif($_SESSION["tid"] == 4) {
-                        echo '
-                            <a class="menu-item" href="#"><li>Create New Employee</li></a>
-                            <a class="menu-item" href="#"><li>Remove Employee</li></a>
-                            <a class="menu-item" href="#"><li>Reset Password</li></a>
-                            <a class="menu-item" href="./password-reset.php"><li>Manage Help Links</li></a>
-                        ';
-                    } else {
-                        header("Location: ../login.php");
-                        die();
-                    }
-                ?>
-            </ul>
-        </div>
+        </nav>
