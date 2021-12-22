@@ -2,48 +2,65 @@
     require("../../includes/helper.php");
     require("../../includes/db.php");
 
-    changeTitle("../templates/header.php", "Adminitstrator - WT");
+    changeTitle("../templates/header.php", "New Product - Administrator");
 ?>
-    <div id="content">
+    <div class="container mt-3">
         <h1>Add New Product</h1>
-
-        <form action="new-product.php" method="post" id="new-product" enctype="multipart/form-data">
-            <table>
-                <tr>
-                    <td class="font-xlarge">Product Code</td>
-                    <td><input type="text" class="border-round border-gray font-xlarge" size="50" name="new-product-code" autofocus required></td>
-                </tr>
-                <tr>
-                    <td class="font-xlarge">Product Name</td>
-                    <td><input type="text" class="border-round border-gray font-xlarge" size="50" name="new-product-name" required></td>
-                </tr>
-                <tr>
-                    <td class="font-xlarge">Product Type</td>
-                    <td>
-                        <select class="border-round border-gray font-xlarge" name="new-product-type" required>
-                            <option value="" selected disabled>--SELECT PRODUCT TYPE--</option>
-                            <?php
-                                $sql = "SELECT * FROM types WHERE type_name != 'DISCOUNT' ORDER BY type_name ASC";
-                                $result = prepareSQL($conn, $sql);
-                                while($rowResult = mysqli_fetch_array($result)) {
-                                    echo '<option value="'.$rowResult["type_id"].'">'.$rowResult["type_name"].'</option>';
-                                }
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="font-xlarge">Product Image</td>
-                    <td><input type="file" class="border-round font-xlarge" name="new-product-image" required></td>
-                </tr>
-                <tr>
-                    <td class="font-xlarge">Product Description</td>
-                    <td><textarea class="border-round border-gray" name="new-product-desc" cols="91" rows="10" required></textarea></td>
-                </tr>
-                <tr>
-                   <td style="text-align: right !important;" colspan="2"><input type="submit" class="border-round border-gray font-xlarge" name="new-product" value="Add New Product"></td> 
-                </tr>
-            </table>
+        <form class="mt-4" action="./new-product.php" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-2">
+                    <label class="col-form-label" for="new-product-code"><h4>Product Code</h4></label>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="new-product-code" id="new-product-code" autofocus required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label class="col-form-label" for="new-product-name"><h4>Product Name</h4></label>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="new-product-name" id="new-product-name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label class="col-form-label" for="new-product-type"><h4>Product Type</h4></label>
+                </div>
+                <div class="col">
+                    <select class="form-select" name="new-product-type" id="new-product-type" required>
+                        <option selected disabled>--SELECT PRODUCT TYPE--</option>
+                        <?php
+                            $sql = "SELECT * FROM types WHERE type_name != 'DISCOUNT' ORDER BY type_name ASC";
+                            $result = prepareSQL($conn, $sql);
+                            while($rowResult = mysqli_fetch_array($result)) {
+                                echo '<option value="'.$rowResult["type_id"].'">'.$rowResult["type_name"].'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label class="col-form-label" for="new-product-image"><h4>Product Image</h4></label>
+                </div>
+                <div class="col">
+                    <input type="file" class="form-control" name="new-product-image" id="new-product-image" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label class="col-form-label" for="new-product-desc"><h4>Product Description</h4></label>
+                </div>
+                <div class="col">
+                    <textarea class="form-control" name="new-product-desc" id="new-product-desc"></textarea>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col inline-right">
+                    <button type="submit" class="btn btn-light" name="new-product"><strong>Add New Product</strong></button>
+                </div>
+            </div>
         </form>
     </div>
 <?php
@@ -55,19 +72,61 @@
         $imgExt = pathinfo($img, PATHINFO_EXTENSION);
         $ext = array("gif", "png", "jpg", "jpeg");
 
-        if(in_array($imgExt, $ext)) {
-            $rename = 'image_'.date('Y-m-d-H-i-s').'_'.uniqid().'.'.$imgExt;
-
-            move_uploaded_file($imgTmp, "../../images/product_images/$rename");
-
-            $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
-            prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
-        }
-        else {
+        if(!isset($_POST["new-product-type"])) {
             echo '
                 <script>
-                    alert("Please upload an image file.");
+                    alert("Please select a product type.");
                 </script>
             ';
+        } else {
+            if(!in_array($imgExt, $ext)) {
+                echo '
+                    <script>
+                        alert("Please upload an image file.");
+                    </script>
+                ';
+            } else {
+                $sql = "SELECT product_code, product_name FROM products";
+                $result = prepareSQL($conn, $sql);
+                if(mysqli_num_rows($result) === 0) {
+                    $rename = date('YmdHis').'_'.uniqid().'.'.$imgExt;
+        
+                    move_uploaded_file($imgTmp, "../../images/product_images/$rename");
+            
+                    $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
+                    prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
+            
+                    echo '
+                        <script>
+                            window.location.replace("dashboard.php");
+                        </script>
+                    ';
+                } else {
+                    while($resultRow = mysqli_fetch_array($result)) {
+                    if($resultRow["product_code"] === $_POST["new-product-code"] || $resultRow["product_name"] === $_POST["new-product-name"]) {
+                        echo '
+                            <script>
+                                alert("Please enter a unique product code or product name");
+                            </script>
+                        ';
+
+                        break;
+                    } else {                        
+                        $rename = date('YmdHis').'_'.uniqid().'.'.$imgExt;
+        
+                        move_uploaded_file($imgTmp, "../../images/product_images/$rename");
+                
+                        $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
+                        prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
+                
+                        echo '
+                            <script>
+                                window.location.replace("dashboard.php");
+                            </script>
+                        ';
+                    }
+                }
+                }
+            }
         }
     }
