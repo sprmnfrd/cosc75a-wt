@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 10:00 AM
+-- Generation Time: Dec 22, 2021 at 11:09 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -53,10 +53,10 @@ CREATE TABLE `credentials` (
 --
 
 INSERT INTO `credentials` (`credential_id`, `credential_employee_id`, `credential_password`, `credential_last_login`) VALUES
-(1, 1, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-20 08:56:40'),
-(2, 2, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-11 14:47:53'),
+(1, 1, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-22 02:24:15'),
+(2, 2, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-21 08:42:20'),
 (3, 3, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-11 14:47:53'),
-(4, 4, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-20 08:57:11');
+(4, 4, '$2y$10$VzaQM0r3NSKGcWb4zD3gceL1eGBV9rk3hjAUWqK4pnTGgqQCTTMra', '2021-12-21 08:39:18');
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,7 @@ CREATE TABLE `prices` (
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
   `product_code` varchar(10) NOT NULL,
-  `product_name` varchar(20) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
   `product_type` int(11) NOT NULL,
   `product_description` varchar(255) DEFAULT NULL,
   `product_image` varchar(255) DEFAULT NULL,
@@ -204,8 +204,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_code`, `product_name`, `product_type`, `product_description`, `product_image`, `product_start_timestamp`, `product_end_timestamp`) VALUES
-(1, '1', 'CAKE', 2, 'Descripton', 'image_2021-12-18-13-07-08_61bd6c7c473c1.png', '2021-12-18 05:07:08', NULL),
-(2, '1', 'CAKE', 2, 'Description', 'image_2021-12-18-13-10-24_61bd6d4019e8b.png', '2021-12-18 05:10:24', NULL);
+(1, 'NYCB', 'New York Style Cheesecake - Blueberry', 2, 'Size:10 x 3\" Round\r\nShelf life: 1 week (Refrigerated)', '20211222174756_61c2f44c78385.jpeg', '2021-12-22 09:47:56', NULL),
+(2, 'NYCS', 'New York Style Cheesecake - Strawberry', 2, 'Size:10 x 3\" Round\r\nShelf life: 1 week (Refrigerated)', '20211222175024_61c2f4e0bef54.jpeg', '2021-12-22 09:50:24', NULL);
 
 -- --------------------------------------------------------
 
