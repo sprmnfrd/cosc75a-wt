@@ -12,7 +12,7 @@
             <form action="./login.php" method="POST" enctype="multipart/form-data" autocomplete="on">
                 <div class="row m-2 mt-4 mb-4">
                     <div class="col-5">
-                        <label class="col-form-label" for="login-id" class="text-white"><h4>Employee ID</h4></label>
+                        <label for="login-id" class="col-form-label text-white"><h4>Employee ID</h4></label>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="login-id" id="login-id" autofocus required>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="row m-2">
                     <div class="col-5">
-                        <label class="col-form-label" for="login-pass" class="text-white"><h4>Password</h4></label>
+                        <label for="login-pass" class="col-form-label text-white"><h4>Password</h4></label>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" name="login-pass" id="login-pass" required>
