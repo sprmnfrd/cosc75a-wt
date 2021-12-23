@@ -102,16 +102,23 @@
                         </script>
                     ';
                 } else {
-                    while($resultRow = mysqli_fetch_array($result)) {
-                    if($resultRow["product_code"] === $_POST["new-product-code"] || $resultRow["product_name"] === $_POST["new-product-name"]) {
-                        echo '
-                            <script>
-                                alert("Please enter a unique product code or product name");
-                            </script>
-                        ';
+                    $duplicate = false;
 
-                        break;
-                    } else {                        
+                    while($resultRow = mysqli_fetch_array($result)) {
+                        if($resultRow["product_code"] === $_POST["new-product-code"]) {
+                            $duplicate = true;
+
+                            echo '
+                                <script>
+                                    alert("Please enter a unique product code or product name");
+                                </script>
+                            ';
+
+                            break;
+                        }
+                    }
+
+                    if(!$duplicate) {
                         $rename = date('YmdHis').'_'.uniqid().'.'.$imgExt;
         
                         move_uploaded_file($imgTmp, "../../images/product_images/$rename");
@@ -125,7 +132,6 @@
                             </script>
                         ';
                     }
-                }
                 }
             }
         }
