@@ -126,6 +126,17 @@
                 
                         $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
                         prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
+
+                        $sql = "SELECT product_id FROM products WHERE product_code=?";
+                        $result = prepareSQL($conn, $sql, "s", $_POST["new-product-code"]);
+                        while($resultRow = mysqli_fetch_array($result)) {
+                            $productID = $resultRow["product_id"];
+
+                            $sql = "INSERT INTO prices VALUES (NULL, ?, ?, NULL, NULL)";
+                            prepareSQL($conn, $sql, "ii", $productID, $_POST["new-product-price"]);
+
+                            break;
+                        }
                 
                         echo '
                             <script>
