@@ -50,6 +50,14 @@
             </div>
             <div class="row">
                 <div class="col-2">
+                    <label class="col-form-label" for="new-product-price"><h4>Product Price</h4></label>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" name="new-product-price" id="new-product-price" min="0" value="0" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
                     <label class="col-form-label" for="new-product-desc"><h4>Product Description</h4></label>
                 </div>
                 <div class="col">
@@ -86,31 +94,24 @@
                     </script>
                 ';
             } else {
-                $sql = "SELECT product_code, product_name FROM products";
-                $result = prepareSQL($conn, $sql);
-                if(mysqli_num_rows($result) === 0) {
-                    $rename = date('YmdHis').'_'.uniqid().'.'.$imgExt;
-        
-                    move_uploaded_file($imgTmp, "../../images/product_images/$rename");
-            
-                    $sql = "INSERT INTO products VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL)";
-                    prepareSQL($conn, $sql, "ssiss", $_POST["new-product-code"], $_POST["new-product-name"], $_POST["new-product-type"], $_POST["new-product-desc"], $rename);
-            
-                    echo '
-                        <script>
-                            window.location.replace("dashboard.php");
-                        </script>
-                    ';
+                if($_POST["new-product-price"] == 0) {
+                echo '
+                    <script>
+                        alert("Please set a price.");
+                    </script>
+                ';
                 } else {
                     $duplicate = false;
 
+                    $sql = "SELECT product_code, product_name FROM products";
+                    $result = prepareSQL($conn, $sql);
                     while($resultRow = mysqli_fetch_array($result)) {
                         if($resultRow["product_code"] === $_POST["new-product-code"]) {
                             $duplicate = true;
 
                             echo '
                                 <script>
-                                    alert("Please enter a unique product code or product name");
+                                    alert("Please enter a unique product code.");
                                 </script>
                             ';
 
