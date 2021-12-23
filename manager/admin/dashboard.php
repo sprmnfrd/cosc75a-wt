@@ -5,9 +5,9 @@
     changeTitle("../templates/header.php", "Administrator - WT");
     validateUserPage($_SESSION["tid"], $_SERVER["REQUEST_URI"]);
 ?>
-    <div class="container">
+    <div class="container mt-3">
         <h1>Products</h1>
-        <table class="table table-sm table-hover">
+        <table class="table table-sm table-hover mt-4">
             <thead>
                 <tr>
                     <th class="inline-center">Code</th>
