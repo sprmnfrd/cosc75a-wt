@@ -61,3 +61,9 @@ button {
 #login {
     height: 60vh !important;
 }
+
+#update-product-image-display {
+    width: 125px;
+    height: 100px;
+    border-radius: 5px;
+}
