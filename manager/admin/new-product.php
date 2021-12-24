@@ -78,7 +78,6 @@
         $img = $_FILES["new-product-image"]["name"];
         $imgTmp = $_FILES["new-product-image"]["tmp_name"];
         $imgExt = pathinfo($img, PATHINFO_EXTENSION);
-        $ext = array("gif", "png", "jpg", "jpeg");
 
         if(!isset($_POST["new-product-type"])) {
             echo '
@@ -87,7 +86,7 @@
                 </script>
             ';
         } else {
-            if(!in_array($imgExt, $ext)) {
+            if(!isImage($imgExt)) {
                 echo '
                     <script>
                         alert("Please upload an image file.");
