@@ -39,3 +39,9 @@
             die();
         }
     }
+
+    function isImage($imgExt) {
+        $ext = array("gif", "png", "jpg", "jpeg");
+        
+        return in_array($imgExt, $ext);
+    }
