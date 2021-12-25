@@ -57,6 +57,10 @@ button {
     height: 12vh;
 }
 
+.error {
+    color: red !important;
+}
+
 /* IDs */
 #login {
     height: 60vh !important;
