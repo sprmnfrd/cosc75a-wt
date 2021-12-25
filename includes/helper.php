@@ -45,3 +45,23 @@
         
         return in_array($imgExt, $ext);
     }
+
+    function isEmpty($element, string $element_id) {
+        if(!isset($element) || empty($element)) {
+            echo '
+                <script>
+                    toggleError("'.$element_id.'-error", "show");
+                </script>
+            ';
+
+            return true;
+        } else {
+            echo '
+                <script>
+                    toggleError("'.$element_id.'-error", "hide");
+                </script>
+            ';
+
+            return false;
+        }
+    }
