@@ -2,7 +2,8 @@
     require("../../includes/helper.php");
     require("../../includes/db.php");
 
-    changeTitle("../templates/header.php", "Adminitstrator - WT")
+    changeTitle("../templates/header.php", "Adminitstrator - WT");
+    validateUserPage($_SESSION["tid"], $_SERVER["REQUEST_URI"]);
 ?>
     <div id="content">
         <h1>Generate Report</h1>

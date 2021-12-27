@@ -3,6 +3,7 @@
     require("../../includes/db.php");
 
     changeTitle("../templates/header.php", "Update Product");
+    validateUserPage($_SESSION["tid"], $_SERVER["REQUEST_URI"]);
 ?>
     <div class="container mt-3">
         <h1>Update Product</h1>
