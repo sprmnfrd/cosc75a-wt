@@ -33,9 +33,9 @@
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Update Inventory</a></li>
                             ';
                         } elseif($_SESSION["tid"] == 3) {
-                            echo '
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">New Promotion</a></li>
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">View Discounts</a></li>
+                           echo '
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./manage-discount.php">Manage Discounts</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./new-promotion.php">New Promotion</a></li>
                             ';
                         } elseif($_SESSION["tid"] == 4) {
                             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">
