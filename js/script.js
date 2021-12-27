@@ -7,15 +7,12 @@ function displayUpdateData(product_code, product_name, product_type, product_ima
     let pDescription = document.getElementById("update-product-desc");
 
     pCode.value = product_code;
-    pCode.disabled = true;
-
     pName.value = product_name;
-
     pType.value = product_type;
-    pType.disabled = true;
 
     pImage.src = "../../images/product_images/"+product_image;
     document.getElementById("update-product-image-display-div").classList.remove("d-none");
+
     prAmount.value = price_amount;
     pDescription.value = product_description;
 }
