@@ -120,8 +120,6 @@
         $emptyType = isEmpty($pType, "new-product-type");
         $emptyDesc = isEmpty($pDesc, "new-product-desc");
 
-        echo $emptyCode." ".$emptyName." ".$emptyType;
-
         $errorCode = false;
         $errorImage = false;
         $errorPrice = false;
