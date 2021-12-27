@@ -90,6 +90,9 @@
                         <textarea class="form-control" name="new-product-desc" id="new-product-desc"></textarea>
                     </div>
                 </div>
+                <div class="row mb-2 d-none error" id="new-product-desc-error">
+                        <span>Description Requied</span>
+                </div>
             </div>
             <div class="row mt-5">
                 <div class="col inline-right">
@@ -115,6 +118,7 @@
         $emptyCode = isEmpty($pCode, "new-product-code");
         $emptyName = isEmpty($pName, "new-product-name");
         $emptyType = isEmpty($pType, "new-product-type");
+        $emptyDesc = isEmpty($pDesc, "new-product-desc");
 
         echo $emptyCode." ".$emptyName." ".$emptyType;
 
@@ -179,7 +183,7 @@
             $errorPrice = true;
         }
 
-        if(!$emptyCode && !$emptyName && !$emptyType && !$errorCode && !$errorImage && !$errorPrice) {
+        if(!$emptyCode && !$emptyName && !$emptyType && !$errorCode && !$errorImage && !$errorPrice && !$emptyDesc) {
             $rename = date('YmdHis').'_'.uniqid().'.'.$imgExt;
         
             move_uploaded_file($imgTmp, "../../images/product_images/$rename");
