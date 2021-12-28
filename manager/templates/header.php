@@ -23,9 +23,14 @@
                     <?php
                         if($_SESSION["tid"] == 1) {
                             echo '
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./new-product.php">New Product</a></li>
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./edit-product.php">Update Product</a></li>
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="./report.php">Generate Report</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Product</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li"><a class="dropdown-item" aria-current="page" href="./new-product.php">New Product</a></li>
+                                <li"><a class="dropdown-item" aria-current="page" href="./edit-product.php">Update Product</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./report.php">Generate Report</a></li>
                             ';
                         } elseif($_SESSION["tid"] == 2) {
                             echo '
@@ -34,8 +39,21 @@
                             ';
                         } elseif($_SESSION["tid"] == 3) {
                            echo '
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./manage-discount.php">Manage Discounts</a></li>
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./new-promotion.php">New Promotion</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Promotion</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" aria-current="page" href="./new-promotion.php">New Promotion</a></li>
+                                    <li><a class="dropdown-item" aria-current="page" href="#">Update Promotion</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Discount</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" aria-current="page" href="./new-promotion.php">New Discount</a></li>
+                                    <li><a class="dropdown-item" aria-current="page" href="#">Update Discount</a></li>
+
+                                </ul>
+                            </li>
+                            
                             ';
                         } elseif($_SESSION["tid"] == 4) {
                             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">
