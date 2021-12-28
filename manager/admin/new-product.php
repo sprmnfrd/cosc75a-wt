@@ -62,7 +62,7 @@
                 </div>
                 <div class="col">
                     <div class="row">
-                        <input type="file" class="form-control" name="new-product-image" id="new-product-image"><!-- required>-->
+                        <input type="file" class="form-control" name="new-product-image" id="new-product-image" required>
                     </div>
                     <div class="row mb-2 d-none error" id="new-product-image-error">
                         <span>Invalid File</span>
