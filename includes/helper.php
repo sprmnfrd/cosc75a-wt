@@ -43,7 +43,7 @@
     function isImage($imgExt) {
         $ext = array("gif", "png", "jpg", "jpeg");
         
-        return in_array($imgExt, $ext);
+        return in_array(strtolower($imgExt), $ext);
     }
 
     function isEmpty($element, string $element_id) {
@@ -63,5 +63,35 @@
             ';
 
             return false;
+        }
+    }
+
+    function validateDate($date, $format = "Y-m-d H:i:s") {
+        $d = DateTime::createFromFormat($format, $date);
+
+        return $d && $d->format($format) === $date;
+    }
+
+    function validateDateRange($start, $end) {
+        $today = date("Y-m-d H:i:s");
+
+        if(!validateDate($start)) {
+            return -1;
+        }
+
+        if(!validateDate($end)) {
+            return -2;
+        }
+
+        if($start < $today || $end < $today || $end < $start) {
+            if($end < $start && $start < $today) {
+                return -3;
+            } elseif($end < $today || $end < $start) {
+                return -2;
+            } else {
+                return -1;
+            }
+        } else {
+            return 1;
         }
     }

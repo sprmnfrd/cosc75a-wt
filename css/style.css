@@ -47,6 +47,14 @@ button {
     padding-top: 1vh;
 }
 
+.col-title {
+    width: 20% !important;
+}
+
+.col-input {
+    width: 80% !important;
+}
+
 .dashboard-logo {
     width: 4vw;
     height: 8vh;
