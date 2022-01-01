@@ -98,7 +98,7 @@
                     
                     <div class="row mt-2 mb-4 d-none" id="update-product-image-display-div">
                         <div class="col gx-0">
-                            <img id="update-product-image-display">
+                            <img class="update-image-display" id="update-product-image-display">
                         </div>
                     </div>
                 </div>
@@ -283,7 +283,7 @@
                             </script>
                         ';
             
-                        $errorCode = false;
+                        $errorImage = false;
                     }
                 }
 

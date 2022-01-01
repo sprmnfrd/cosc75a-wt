@@ -156,7 +156,6 @@
         if($resultRow["result"]) {
             echo '
                 <script>
-                    alert("'.$resultRow["result"].'");
                     toggleError("new-promotion-start-error", "show");
                     toggleError("new-promotion-end-error", "show");
                 </script>
