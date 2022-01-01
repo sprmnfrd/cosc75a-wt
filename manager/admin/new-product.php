@@ -106,7 +106,7 @@
     require("../templates/footer.php");
 
     if(isset($_POST["new-product"])) {
-        $pCode = $_POST["new-product-code"];
+        $pCode = strtoupper($_POST["new-product-code"]);
         $pName = $_POST["new-product-name"];
         $pType = $_POST["new-product-type"] ?? "0";
         $pPrice = $_POST["new-product-price"];

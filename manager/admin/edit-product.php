@@ -205,7 +205,7 @@
 
     if(isset($_POST["update-product"])) {
         $pStatus = $_POST["update-product-status"];
-        $pCode = $_POST["update-product-code"];
+        $pCode = strtoupper($_POST["update-product-code"]);
         $pName = $_POST["update-product-name"];
         $pType = $_POST["update-product-type"] ?? 0;
         $pPrice = $_POST["update-product-price"];
