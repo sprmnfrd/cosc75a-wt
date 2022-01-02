@@ -71,7 +71,7 @@
     require("../templates/footer.php");
 
     if(isset($_POST["new-promotion"])) {
-        $prCode = $_POST["new-promotion-code"];
+        $prCode = strtoupper($_POST["new-promotion-code"]);
         $prStart = date("Y-m-d H:i:s", strtotime($_POST["new-promotion-start"]));
         $prEnd = date("Y-m-d H:i:s", strtotime($_POST["new-promotion-end"]));
 
