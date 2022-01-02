@@ -74,6 +74,8 @@
 
     function validateDateRange($start, $end) {
         $today = date("Y-m-d H:i:s");
+        $start = strtotime($start);
+        $end = strtotime($end);
 
         if(!validateDate($start)) {
             return -1;
