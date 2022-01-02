@@ -217,7 +217,7 @@
         $emptyPrice = isEmpty($pPrice, "update-product-price");
         $emptyDesc = isEmpty($pDesc, "update-product-desc");
 
-        $emptyImage = empty($_FILES["update-product-image"]);
+        $emptyImage = isset($_FILES["update-product-image"]);
         if(!$emptyImage) {
             $img = $_FILES["update-product-image"]["name"];
             $imgTmp = $_FILES["update-product-image"]["tmp_name"];
