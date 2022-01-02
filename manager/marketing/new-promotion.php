@@ -83,7 +83,6 @@
         $emptyStart = isEmpty($prStart, "new-promotion-start");
         $emptyEnd = isEmpty($prEnd, "new-promotion-end");
 
-        $errorCode = false;
         $errorImage = !isImage($imgExt);
         $errorDate = validateDateRange($prStart, $prEnd);
 
