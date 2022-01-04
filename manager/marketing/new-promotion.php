@@ -147,29 +147,29 @@
                     toggleError("new-promotion-end-error", "hide");
                 </script>
             ';
-        }
 
-        $sql = "SELECT IF(EXISTS(SELECT promotion_id FROM promotions WHERE promotion_end_timestamp >= ? AND promotion_start_timestamp <= ?), true, false) AS result";
-        $result = prepareSQL($conn, $sql, "ss", $prStart, $prEnd);
-        $resultRow = mysqli_fetch_array($result);
-        if($resultRow["result"]) {
-            echo '
-                <script>
-                    toggleError("new-promotion-start-error", "show");
-                    toggleError("new-promotion-end-error", "show");
-                </script>
-            ';
+            $sql = "SELECT IF(EXISTS(SELECT promotion_id FROM promotions WHERE promotion_end_timestamp >= ? AND promotion_start_timestamp <= ?), true, false) AS result";
+            $result = prepareSQL($conn, $sql, "ss", $prStart, $prEnd);
+            $resultRow = mysqli_fetch_array($result);
+            if($resultRow["result"]) {
+                echo '
+                    <script>
+                        toggleError("new-promotion-start-error", "show");
+                        toggleError("new-promotion-end-error", "show");
+                    </script>
+                ';
 
-            $errorDate = -4;
-        } else {
-            echo '
-                <script>
-                    toggleError("new-promotion-start-error", "hide");
-                    toggleError("new-promotion-end-error", "hide");
-                </script>
-            ';
+                $errorDate = -4;
+            } else {
+                echo '
+                    <script>
+                        toggleError("new-promotion-start-error", "hide");
+                        toggleError("new-promotion-end-error", "hide");
+                    </script>
+                ';
 
-            $errorDate = 1;
+                $errorDate = 1;
+            }
         }
 
         if(!$emptyCode && !$emptyStart && !$emptyEnd && !$errorCode && !$errorImage && $errorDate == 1) {

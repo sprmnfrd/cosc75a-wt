@@ -72,28 +72,36 @@
         return $d && $d->format($format) === $date;
     }
 
-    function validateDateRange($start, $end) {
-        $today = date("Y-m-d H:i:s");
-        $start = strtotime($start);
-        $end = strtotime($end);
-
-        if(!validateDate($start)) {
-            return -1;
-        }
+    function validateDateRange($start, $end,  $type = "new") {
+        $today = strtotime(date("Y-m-d H:i:s"));
+        $timeStart = strtotime($start);
+        $timeEnd = strtotime($end);
 
         if(!validateDate($end)) {
             return -2;
         }
 
-        if($start < $today || $end < $today || $end < $start) {
-            if($end < $start && $start < $today) {
-                return -3;
-            } elseif($end < $today || $end < $start) {
-                return -2;
-            } else {
+        if($type == "new") {
+            if(!validateDate($start)) {
                 return -1;
             }
+    
+            if($timeStart < $today || $timeEnd < $today || $timeEnd < $timeStart) {
+                if($timeEnd < $timeStart || $timeStart < $today) {
+                    return -3;
+                } elseif($timeEnd < $today || $timeEnd < $timeStart) {
+                    return -2;
+                } else {
+                    return -1;
+                }
+            } else {
+                return 1;
+            }
         } else {
-            return 1;
+            if($timeEnd < $timeStart) {
+                return -2;
+            } else {
+                return 1;
+            }
         }
     }
