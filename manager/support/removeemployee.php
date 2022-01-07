@@ -34,16 +34,15 @@
         </table>
     </div>
 <?php
-    $queries = array();
-    parse_str($_SERVER['QUERY_STRING'], $queries);
+    if(isset($_GET["id"])) {
+        $sql = "UPDATE employees SET employee_account_end=? WHERE employee_id=?";
+        prepareSQL($conn, $sql, "si", date("Y-m-d H:i:s"), $_GET["id"]);
 
-    $sql = "UPDATE employees SET employee_account_end=? WHERE employee_id=?";
-    prepareSQL($conn, $sql, "si", date("Y-m-d H:i:s"), $queries["id"]);
-
-    echo '
-        <script>
-            window.location.replace("removeemployee.php");
-        </script>
-    ';
+        echo '
+            <script>
+                window.location.replace("removeemployee.php");
+            </script>
+        ';
+    }
 ?>
 
