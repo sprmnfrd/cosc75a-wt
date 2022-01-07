@@ -69,13 +69,13 @@ button {
     color: red !important;
 }
 
-/* IDs */
-#login {
-    height: 60vh !important;
-}
-
-#update-product-image-display {
+.update-image-display {
     width: 125px;
     height: 100px;
     border-radius: 5px;
+}
+
+/* IDs */
+#login {
+    height: 60vh !important;
 }
