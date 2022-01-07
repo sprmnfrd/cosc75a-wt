@@ -278,13 +278,13 @@
             }
 
             $sql = "UPDATE promotions SET promotion_code=?, promotion_start_timestamp=?, promotion_end_timestamp=? WHERE promotion_id=?";
-            // prepareSQL($conn, $sql, "sssi", $prCode, $prStart, $prEnd, $resultRow["promotion_id"]);
+            prepareSQL($conn, $sql, "sssi", $prCode, $prStart, $prEnd, $resultRow["promotion_id"]);
 
-            // echo '
-            //     <script>
-            //         window.location.replace("dashboard.php");
-            //     </script>
-            // ';
+            echo '
+                <script>
+                    window.location.replace("dashboard.php");
+                </script>
+            ';
         } else {
             echo '
                 <script>
