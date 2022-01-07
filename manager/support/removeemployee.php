@@ -4,35 +4,46 @@
 
     changeTitle("../templates/header.php", "Support - WT");
     validateUserPage($_SESSION["tid"], $_SERVER["REQUEST_URI"]);
-
-    // sql to delete a record
-    $sql = "DELETE FROM employees WHERE employee_id=".$_GET["id"];
-
-    if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
-}   else {
-    echo "Error deleting record: " . $conn->error;
-}
-
-
-
-?> 
-    <div id="content">
-   <?php    
-    $sql = "SELECT employee_id, employee_team_id, employee_firstname, employee_lastname FROM employees";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<br> id: ". $row["employee_team_id"]. " - Name: ". $row["employee_firstname"]. " " . $row["employee_lastname"] . "<a href='removeemployee.php?id=".$row["employee_id"] ."'> delete </a> <br>";
-    }
-} else {
-    echo "0 results";
-}
-        
 ?>
+    <div class="container mt-3">
+        <table class="table table-sm table-hover mt-4">
+            <thead>
+                <tr>
+                    <th class="inline-center">First Name</th>
+                    <th class="inline-center">Last Name</th>
+                    <th class="inline-center">Team</th>
+                    <th class="inline-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $sql = "SELECT * FROM employees INNER JOIN teams WHERE employee_team_id = team_id";
+                    $result = prepareSQL($conn, $sql);
+                    while($resultRow = mysqli_fetch_array($result)) {
+                        echo '
+                            <tr>
+                                <td class="inline-center">'.$resultRow["employee_firstname"].'</td>
+                                <td class="inline-center">'.$resultRow["employee_lastname"].'</td>
+                                <td class="inline-center">'.$resultRow["team_name"].'</td>
+                                <td class="inline-center"><a href="'.$_SERVER['REQUEST_URI'].'?id='.$resultRow["employee_id"].'">REMOVE</a></td>
+                            </tr>
+                        ';
+                    }
+                ?>
+            </tbody>
+        </table>
     </div>
 <?php
+    $queries = array();
+    parse_str($_SERVER['QUERY_STRING'], $queries);
 
+    $sql = "UPDATE employees SET employee_account_end=? WHERE employee_id=?";
+    prepareSQL($conn, $sql, "si", date("Y-m-d H:i:s"), $queries["id"]);
+
+    echo '
+        <script>
+            window.location.replace("removeemployee.php");
+        </script>
+    ';
+?>
 
