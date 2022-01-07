@@ -66,7 +66,6 @@
                                     </li>
                                  </ul>
                                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Reset Password</a></li>
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Manage Links</a></li>
                             ';
                         } else {
                             header("Location: ../login.php");
