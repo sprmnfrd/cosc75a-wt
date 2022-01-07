@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     date_default_timezone_set('Asia/Manila');
     session_start();
 ?>
@@ -59,8 +60,8 @@
                             echo '<ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Manage Employees</a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="#">Add New Employee</a></li>
-                                            <li><a class="dropdown-item" href="#">Remove Employee</a></li>
+                                            <li><a class="dropdown-item" href="addemployee.php">Add New Employee</a></li>
+                                            <li><a class="dropdown-item" href="removeemployee.php">Remove Employee</a></li>
                                         </ul>
                                     </li>
                                  </ul>
