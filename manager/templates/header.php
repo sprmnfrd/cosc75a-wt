@@ -42,7 +42,7 @@
                             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Promotion</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" aria-current="page" href="./new-promotion.php">New Promotion</a></li>
-                                    <li><a class="dropdown-item" aria-current="page" href="#">Update Promotion</a></li>
+                                    <li><a class="dropdown-item" aria-current="page" href="./edit-promotion.php">Update Promotion</a></li>
                                 </ul>
                             </li>
 
