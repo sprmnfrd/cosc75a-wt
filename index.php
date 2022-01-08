@@ -1,35 +1,32 @@
-<?php
-    require("./includes/helper.php");
-    changeTitle("./templates/header.php", "WALANG TATAK");
-?>
-        <section class="header">
-                <nav>
-                    <a href="index.php"><img src="images/logo.jpg"></a>
-                    <div class="nav-links" id="navLinks">
-                        <i class="fa fa-times-circle" onclick="hideMenu()"></i>
-                        <ul>
-                            <li><a href=""><b>Home</b></a></li>
-                            <li><a href="menu.php"><b>Menu</b></a></li>
-                            <li><a href="contact/index.php"><b>Contact Us</b></a></li>
-                            <li><a href="admin_area/admin-login.php"><b>Admin</b></a></li>
-                        </ul>
-                    </div>
-                    <i class="fa fa-bars" onclick="showMenu()"></i>
-                </nav>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WALANG TATAK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
 
-        <div class="book-btn0">		
-        <a href="" class="book-btn"><b>ORDER NOW</b></a>
+<body>
+
+    <div class="wrapper">
+    <div class="logo">
+        <img src="images/logo.jpg" alt="logo">
+        </div>
+        <ul class="nav-area">
+            <li><a href="">Home</a></li>
+            <li><a href="contact/index.php">Contact Us</a></li>
+            <li><a href="about/about.php">About Us</a></li>
+            <li><a href="menu/menu.php">Menu</a></li>
+        </ul>
         </div>
 
-        </section>
+    <div class="welcome-text">
+        <h1>WALANG TATAK</h1>
+        
+    </div>
 
-        <!---About Us-->
-        <section class="About Us">
-            <h1><b><center>About Us</center></b></h1>
-                    <p><center>Lorem ipsum dolor sit amet,consectetur adipiscing elit.Lorem ipsum dolor sit amet,consectetur adipiscing elit.Lorem ipsum dolor sit amet,consectetur adipiscing elit.</center></p>
-                </div>
-                
-            </div>
-        </section>
-    </body>
+</body>
 </html>
